@@ -1,0 +1,24 @@
+{
+  "name": "conwaygol",
+  "version": "1.0.0",
+  "description": "Conway's Game of Life Web-based Game",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenhks/conwaygol_python.git"
+  },
+  "author": "Ken Ho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kenhks/conwaygol_python/issues"
+  },
+  "homepage": "https://github.com/kenhks/conwaygol_python#readme"
+}
