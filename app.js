@@ -31,9 +31,7 @@ let players = {};
 let playerCount = 0;
 let grid = new2darray(config.rows, config.columns);
 let usergrid = new2darray(config.rows, config.columns);
-// let grid = newRandom2darray(config.rows, config.columns);
 let nextgrid = new2darray(config.rows, config.columns);
-let nextusergrid = new2darray(config.rows, config.columns);
 
 function countNeighbors(grid, x, y) {
     var sum = 0;
@@ -67,6 +65,35 @@ io.on('connection', function (socket) {
     for (let player_socket in players) {
         socket.emit('newplayer', players[player_socket]);
     };
+    function NewGeneration() {
+        for (let col = 0; col < grid.length; col++) {
+            for (let row = 0; row < grid[col].length; row++) {
+              let state = grid[col][row];
+              // Count live neighbors!
+              var neighbors = countNeighbors(grid, col, row);
+              var data = {
+                'x': col,
+                'y': row,
+              };
+              if (state == 0 && neighbors == 3) {
+                nextgrid[col][row] = 1;
+                usergrid[col][row] = 0;
+                data['value'] = 1
+                socket.emit("grid", data);
+              } else if (state == 1 && (neighbors < 2 || neighbors > 3)) {
+                nextgrid[col][row] = 0;
+                usergrid[col][row] = 0;
+                data['value'] = 0;
+                socket.emit("grid", data);
+              } else {
+                nextgrid[col][row] = state;
+              }
+            }
+          }
+        grid = nextgrid;
+        nextgrid = new2darray(config.rows, config.columns);
+    };
+    setInterval(NewGeneration, config.generationInterval);
     socket.broadcast.emit('newplayer', players[socket.id]);
     socket.broadcast.emit('online', players[socket.id]);
     console.log(`Player id ${socket.id} connected`);
