@@ -2,14 +2,18 @@
   "name": "conwaygol",
   "version": "1.0.0",
   "description": "Conway's Game of Life Web-based Game",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js",
+    "debug": "nodemon app.js"
   },
   "repository": {
     "type": "git",
