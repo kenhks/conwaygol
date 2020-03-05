@@ -1,5 +1,5 @@
 {
-    "rows": 100,
-    "columns": 100,
+    "rows": 40,
+    "columns": 60,
     "generationInterval": 5000
 }
