@@ -1,0 +1,45 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Convway's Game of Life</title>
+    <meta name="theme-color" content="#563d7c">
+    <link rel="stylesheet" href="/asset/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/asset/js/game.js"></script>
+</head>
+<body data-gr-c-s-loaded="true"> 
+    <nav class="site-header sticky-top py-1 ">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+          <a class="py-2 d-none d-md-inline-block" href="/">Convway's Game of Life</a>
+          <a class="py-2 d-none d-md-inline-block" href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life" target="_blank">Help</a>
+        </div>
+    </nav>
+    
+    <main role="main">
+        <div class="jumbotron">
+          <div class="container">
+            <h1 class="display-3">Welcome</h1>
+            <p>
+                This is a multi-player version of conway game of life.<br>
+                Please enter you name and click start
+            </p>
+            <div class="input-group mb-3 w-50">
+                <input id="username" type="text" class="form-control" required="true" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" onclick="start()">Start</button>
+                </div>
+            </div>
+          </div>
+          <div id="gol-canvas">
+              <canvas id="gol"></canvas>
+          </div>
+        </div>
+    </main>
+      
+    <footer class="container">
+        <p>kenhks © 2020-</p>
+    </footer>
+</body>
+</html>
