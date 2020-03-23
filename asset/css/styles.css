@@ -7,3 +7,17 @@
     -webkit-backdrop-filter: saturate(180%) blur(20px);
     backdrop-filter: saturate(180%) blur(20px);
   }
+.playercolor {
+    width: 15px;
+    height: 15px;
+    margin-top: 3px;
+    margin-right: 3px;
+    float: left;
+}
+.playername {
+    text-align: left;
+    float: left;
+}
+.game {
+    height: 80%;   
+}

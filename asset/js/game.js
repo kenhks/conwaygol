@@ -3,6 +3,7 @@ let ctx;
 let grid;
 let usergrid;
 let username;
+let users = {};
 let usercolors = {};
 let edit;
 let socket;
@@ -14,17 +15,40 @@ function new2darray(rows, cols) {
 }
 
 function get_username() {
-  document.getElementById("username").readOnly = true;
-  username = document.getElementById("username").value
+  var username_in = document.getElementById("username")
+  username_in.readOnly = true;
+  username = username_in.value;
 }
 
 function start() {
   get_username();
   connect();
-  document.querySelector('body > main > div > div.container').style.display = "none";
+  playerlist_div = document.querySelector('#playerlist')
+  playerlist_div.style.display = "inline";
+  form = document.querySelector('body > main > div > div.container')
+  form.style.display = "none";
   canvas = document.getElementById('gol');
   ctx = canvas.getContext('2d');
   canvas.addEventListener('click', handleclick);
+}
+
+function init_playerlist(name, color, active=false) {
+  let playerlist_ul = document.querySelector('#playerlist_ul')
+  var entry = document.createElement("li");
+  var entry_color = document.createElement("div");
+  entry_color.className = "playercolor";
+  entry_color.style.backgroundColor = color;
+  entry.appendChild(entry_color);
+  var entry_name = document.createElement("div")
+  entry_name.append(document.createTextNode(name))
+  entry_name.className = "playername"
+  entry.appendChild(entry_name);
+  entry.className = "list-group-item";
+  if (active) {
+    entry.className = "list-group-item active";
+  };
+  playerlist_ul.appendChild(entry);
+  
 }
 
 function handleclick(e) {
@@ -47,10 +71,11 @@ function handleclick(e) {
 }
 
 function connect() {
-  socket = io.connect('http://localhost:3000' + `?name=${username}`);
+  socket = io.connect(window.location.hostname + `?name=${username}`);
   socket.on("newplayer", function(data){
-    console.log("newplayer", data);
+    users[data.id] = data.name;
     usercolors[data.id] = data.color;
+    init_playerlist(data.name, data.color, socket.id == data.id);
   });
   socket.on("edit", function(data){
       edit = data.edit;
