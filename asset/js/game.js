@@ -8,6 +8,7 @@ let usercolors = {};
 let edit;
 let socket;
 let resolution = 20;
+window.pattern = false;
 
 function new2darray(rows, cols) {
   return new Array(cols).fill(null)
@@ -23,8 +24,8 @@ function get_username() {
 function start() {
   get_username();
   connect();
-  playerlist_div = document.querySelector('#playerlist')
-  playerlist_div.style.display = "inline";
+  game_div = document.querySelector('#game')
+  game_div.style.display = "inline";
   form = document.querySelector('body > main > div > div.container')
   form.style.display = "none";
   canvas = document.getElementById('gol');

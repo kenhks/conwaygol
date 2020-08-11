@@ -47,9 +47,9 @@
                     </div>
                 </div>
             </div>
-            <div id="game" class="container">
+            <div id="game" class="container" style="display: none;">
                 <div class="row">
-                    <div id="playerlist" class="col-md-1.5" style="display: none;">
+                    <div id="playerlist" class="col-md-1.5">
                         <div class="panel-heading">
                             <div>Players</div>
                         </div>
@@ -61,11 +61,45 @@
                     <div id="gol-canvas" class="col-md-10">
                         <canvas id="gol"></canvas>
                     </div>
+                    <div class="panel-heading col-md-1">
+                        <div>Patterns</div>
+                        <div class="radio btn-group-vertical btn-group-toggle" data-toggle="buttons">
+                            <label class="btn btn-secondary active">
+                                <input type="radio" name="options" id="option1" autocomplete="off" checked> None
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="options" id="option1" autocomplete="off"> Block
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="options" id="option1" autocomplete="off"> Bee-Hive
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="options" id="option1" autocomplete="off"> Blinker
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div class="row">
-
+                <br />
+                <div class="card-deck">
+                    <div class="card col-md-1">
+                        <img class="card-img-top" src="asset/src/block.png" alt="Block Image">
+                        <div class="card-body">
+                            <p class="card-text">Block</p>
+                        </div>
+                    </div>
+                    <div class="card col-md-1">
+                        <img class="card-img-top" src="asset/src/beehive.png" alt="Bee-Hive Image">
+                        <div class="card-body">
+                            <p class="card-text">Bee-Hive</p>
+                        </div>
+                    </div>
+                    <div class="card col-md-1">
+                        <img class="card-img-top" src="asset/src/blinker.gif" alt="Blinker Image">
+                        <div class="card-body">
+                            <p class="card-text">Blinker</p>
+                        </div>
+                    </div>
                 </div>
-            </div>
     </main>
 
     <footer class="container">
